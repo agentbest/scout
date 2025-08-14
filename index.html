@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スカウト代行サービス | 株式会社エージェントベスト - 完全成果報酬型で確実に人材獲得</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .price-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .featured-plan {
+            border: 3px solid #4f46e5;
+            transform: scale(1.05);
+        }
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+        .company-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .company-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-indigo-600">
+                        <i class="fas fa-users-cog mr-2"></i>
+                        エージェントベスト
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-indigo-600 transition duration-300">サービス内容</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-indigo-600 transition duration-300">料金プラン</a>
+                    <a href="#results" class="text-gray-700 hover:text-indigo-600 transition duration-300">実績</a>
+                    <a href="#representative" class="text-gray-700 hover:text-indigo-600 transition duration-300">代表紹介</a>
+                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                        お問い合わせ
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6">
+                完全成果報酬型<br>
+                <span class="text-yellow-300">スカウト代行サービス</span>
+            </h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                月額0円から始められる業界最高水準のスカウト代行。野村総研・ヤフー・デロイト等の優秀な人材が続々と入社しています。
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <div class="bg-white bg-opacity-20 rounded-lg px-6 py-3">
+                    <i class="fas fa-check-circle text-yellow-300 mr-2"></i>
+                    完全成果報酬型
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg px-6 py-3">
+                    <i class="fas fa-shield-alt text-yellow-300 mr-2"></i>
+                    有料職業紹介許可取得
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg px-6 py-3">
+                    <i class="fab fa-linkedin text-yellow-300 mr-2"></i>
+                    LinkedIn運用対応
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#pricing" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 transition duration-300">
+                    料金プランを見る
+                </a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-indigo-600 transition duration-300">
+                    無料相談する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Comparison Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">業界相場との比較</h2>
+                <p class="text-xl text-gray-600">エージェントベストの圧倒的なコストパフォーマンス</p>
+            </div>
+            
+            <div class="overflow-x-auto mb-8">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+                    <thead class="bg-indigo-600 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left">料金体系</th>
+                            <th class="px-6 py-4 text-center">業界相場</th>
+                            <th class="px-6 py-4 text-center">エージェントベスト</th>
+                            <th class="px-6 py-4 text-center">差額</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b">
+                            <td class="px-6 py-4 font-semibold">定額型（月額）</td>
+                            <td class="px-6 py-4 text-center">30～70万円</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-bold">0～30万円</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-bold">最大40万円削減</td>
+                        </tr>
+                        <tr class="border-b bg-gray-50">
+                            <td class="px-6 py-4 font-semibold">従量型（1通あたり）</td>
+                            <td class="px-6 py-4 text-center">1,000～3,000円</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-bold">実質0円※</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-bold">1,000～3,000円削減</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 font-semibold">成果報酬</td>
+                            <td class="px-6 py-4 text-center">新卒25～40万円<br>中途50～100万円</td>
+                            <td class="px-6 py-4 text-center text-indigo-600 font-bold">新卒20万円<br>中途50万円</td>
+                            <td class="px-6 py-4 text-center text-green-600 font-bold">最大50万円削減</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-sm text-gray-500 mt-2">※ フリープランの場合、月額費用無料で成果報酬のみ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">サービス内容</h2>
+                <p class="text-xl text-gray-600">採用活動の全工程を専門チームが代行</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">候補者選定・検索</h3>
+                    <p class="text-gray-600">LinkedIn、OpenWork、BizReach等の主要媒体から、詳細な条件に基づいて最適な候補者を選定します。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">スカウト文作成・送信</h3>
+                    <p class="text-gray-600">魅力的で個別最適化されたスカウト文を作成し、効果的なタイミングで配信を行います。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">日程調整・選考管理</h3>
+                    <p class="text-gray-600">初回面談から最終選考まで、すべての日程調整と選考進捗管理を代行いたします。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">運用改善・分析</h3>
+                    <p class="text-gray-600">配信数・返信率・面談率をリアルタイムで分析し、継続的な運用改善を実施します。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">ATS連携・システム管理</h3>
+                    <p class="text-gray-600">お客様のATS（採用管理システム）と連携し、候補者情報を効率的に管理します。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="text-4xl text-indigo-600 mb-4">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">入社サポート</h3>
+                    <p class="text-gray-600">内定通知から入社まで、候補者へのフォローアップを継続的に実施します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Media Support -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">最新媒体対応</h2>
+                <p class="text-xl text-gray-600">2025年最新仕様に完全対応</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="bg-blue-50 rounded-lg p-6 mb-6">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4">
+                            <i class="fab fa-linkedin text-blue-600 mr-2"></i>
+                            LinkedIn運用最適化
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>ハイレイヤー・グローバル人材へのリーチ</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>英語・日本語バイリンガル対応</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>専門職種別の最適化戦略</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-green-900 mb-4">
+                            <i class="fas fa-building text-green-600 mr-2"></i>
+                            OpenWork 2025新プラン対応
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>通数一括付与の効率的活用</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>ターゲットリスト一括登録</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>スペシャルスカウト戦略運用</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">対応媒体一覧</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fab fa-linkedin text-blue-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">LinkedIn</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fas fa-building text-green-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">OpenWork</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fas fa-briefcase text-blue-500 text-2xl mb-2"></i>
+                            <p class="font-semibold">BizReach</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fas fa-user-tie text-purple-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">doda</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fas fa-leaf text-green-500 text-2xl mb-2"></i>
+                            <p class="font-semibold">Green</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-center">
+                            <i class="fas fa-rocket text-orange-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">AMBI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">料金プラン</h2>
+                <p class="text-xl text-gray-600">お客様のニーズに合わせた柔軟なプラン設計</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- フリープラン -->
+                <div class="bg-white rounded-lg p-8 card-shadow price-card">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">フリープラン</h3>
+                        <div class="text-4xl font-bold text-indigo-600 mb-2">¥0<span class="text-lg text-gray-500">/月</span></div>
+                        <p class="text-gray-600">リスクゼロで始める</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>月額費用：0円</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>成果報酬：新卒20万円/中途50万円</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>最低送信数：150通/月</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>媒体導入・運用</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>募集要項作成</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>日程調整・合否連絡</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                        今すぐ始める
+                    </button>
+                </div>
+                
+                <!-- スタンダードプラン -->
+                <div class="bg-white rounded-lg p-8 card-shadow price-card featured-plan relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-6 py-2 rounded-full font-bold">
+                        人気No.1
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">スタンダードプラン</h3>
+                        <div class="text-4xl font-bold text-indigo-600 mb-2">¥100,000<span class="text-lg text-gray-500">/月</span></div>
+                        <p class="text-gray-600">本格運用におすすめ</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>月額費用：10万円</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>成果報酬：新卒20万円/中途50万円</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>最低送信数：500通/月</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span><strong>ATS登録サービス</strong></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span><strong>隔週定例MTG</strong></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>フリープランの全機能</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-yellow-400 text-gray-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">
+                        詳細を見る
+                    </button>
+                </div>
+                
+                <!-- コミットプラン -->
+                <div class="bg-white rounded-lg p-8 card-shadow price-card">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">コミットプラン</h3>
+                        <div class="text-4xl font-bold text-indigo-600 mb-2">¥300,000<span class="text-lg text-gray-500">/月</span></div>
+                        <p class="text-gray-600">成果報酬なし</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>月額費用：30万円</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span><strong>成果報酬：0円</strong></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>最低送信数：500通/月</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span><strong>専任コンサルタント</strong></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span><strong>週次レポート</strong></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>スタンダードプランの全機能</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                        相談する
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">導入実績</h2>
+                <p class="text-xl text-gray-600">多くの企業様に選ばれています</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center mb-12">
+                <div class="bg-indigo-50 rounded-lg p-6">
+                    <div class="stats-number">800+</div>
+                    <p class="text-gray-600 font-semibold">導入企業数</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6">
+                    <div class="stats-number">95%</div>
+                    <p class="text-gray-600 font-semibold">継続率</p>
+                </div>
+                <div class="bg-yellow-50 rounded-lg p-6">
+                    <div class="stats-number">3,000+</div>
+                    <p class="text-gray-600 font-semibold">採用決定数</p>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-6">
+                    <div class="stats-number">24h</div>
+                    <p class="text-gray-600 font-semibold">平均返信時間</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">入社実績企業出身者</h3>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <div class="bg-white px-6 py-3 rounded-lg company-logo font-semibold text-gray-700">野村総合研究所</div>
+                    <div class="bg-white px-6 py-3 rounded-lg company-logo font-semibold text-gray-700">ヤフー株式会社</div>
+                    <div class="bg-white px-6 py-3 rounded-lg company-logo font-semibold text-gray-700">デロイトトーマツ</div>
+                    <div class="bg-white px-6 py-3 rounded-lg company-logo font-semibold text-gray-700">ワークスアプリケーションズ</div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">SaaSスタートアップ企業</h4>
+                        <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        CTO、プロダクトマネージャー、コンサルタント、デザイナー、エンジニアなど、キーポジションの採用に成功。OpenWork、LinkedIn運用により質の高い候補者を獲得。
+                    </p>
+                    <div class="flex items-center text-green-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span class="font-semibold">採用成功</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">コンサルティング企業</h4>
+                        <div class="text-sm text-gray-500 mb-3">新卒採用支援</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        OfferBox、OpenWork、LabBaseの複数媒体運用により、2023年卒8名、2024年卒12名の採用を達成。人材紹介経由での採用コストを大幅削減。
+                    </p>
+                    <div class="flex items-center text-green-600">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        <span class="font-semibold">採用単価50%削減</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 card-shadow">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">WEBマーケティング企業</h4>
+                        <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        OpenWork、Green、AMBIの運用により、セールス、インフラエンジニアの採用に成功。専門スキルを持つ即戦力人材を効率的に獲得。
+                    </p>
+                    <div class="flex items-center text-green-600">
+                        <i class="fas fa-users mr-2"></i>
+                        <span class="font-semibold">即戦力採用成功</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Representative Section -->
+    <section id="representative" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">代表紹介</h2>
+                <p class="text-xl text-gray-600">豊富な実績と専門知識でサポート</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gradient-to-br from-indigo-500 to-purple-600 p-8 text-center text-white">
+                            <div class="w-32 h-32 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-user-tie text-4xl text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">松岡 良次</h3>
+                            <p class="text-lg">代表取締役</p>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <div class="mb-6">
+                                <h4 class="text-xl font-bold text-gray-900 mb-3">経歴・実績</h4>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-graduation-cap text-indigo-600 mr-3 mt-1"></i>
+                                        <span>法政大学卒業、神奈川県出身</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-briefcase text-indigo-600 mr-3 mt-1"></i>
+                                        <span>人材領域で10年以上のビジネス経験</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-rocket text-indigo-600 mr-3 mt-1"></i>
+                                        <span>WEB広告ベンチャー・大手人材企業・人材系スタートアップを経験</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-building text-indigo-600 mr-3 mt-1"></i>
+                                        <span>2020年4月にエージェントベストを創業</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-xl font-bold text-gray-900 mb-3">専門分野</h4>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 rounded-lg p-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-laptop-code text-blue-600 mr-2"></i>
+                                            <span class="font-semibold">IT・WEB業界</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-green-50 rounded-lg p-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-chart-bar text-green-600 mr-2"></i>
+                                            <span class="font-semibold">スタートアップ支援</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-purple-50 rounded-lg p-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users text-purple-600 mr-2"></i>
+                                            <span class="font-semibold">中途・新卒採用</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-orange-50 rounded-lg p-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-crown text-orange-600 mr-2"></i>
+                                            <span class="font-semibold">エグゼクティブ採用</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-indigo-50 rounded-lg p-4">
+                                <p class="text-gray-700 italic">
+                                    "企業と求職者の最適なマッチングを実現し、日本の採用市場をより効率的で公平なものにしていきたいと考えています。"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Compliance -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">セキュリティ・コンプライアンス</h2>
+                <p class="text-xl text-gray-600">安心してご利用いただける体制</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">有料職業紹介許可</h3>
+                    <p class="text-gray-700 mb-4">厚生労働省許可番号</p>
+                    <div class="bg-white rounded-lg p-3 font-mono font-bold text-blue-600">
+                        13-ユ-316964
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 rounded-lg p-6 text-center">
+                    <div class="text-4xl text-green-600 mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">情報セキュリティ</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            SSL暗号化通信
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            データ保護対策
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            アクセス権限管理
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-purple-50 rounded-lg p-6 text-center">
+                    <div class="text-4xl text-purple-600 mb-4">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-900 mb-3">法令遵守</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i>
+                            労働関連法規遵守
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i>
+                            個人情報保護法対応
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i>
+                            契約書面の適正管理
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">お問い合わせ</h2>
+                <p class="text-xl">まずは無料相談から始めませんか？</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">お気軽にご相談ください</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-yellow-400 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-semibold">お電話でのお問い合わせ</p>
+                                    <p class="text-indigo-200">平日 9:00-18:00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-yellow-400 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-semibold">メールでのお問い合わせ</p>
+                                    <p class="text-indigo-200">24時間受付</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt text-yellow-400 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-semibold">オンライン商談</p>
+                                    <p class="text-indigo-200">事前予約制</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 bg-indigo-700 rounded-lg p-6">
+                            <h4 class="text-lg font-bold mb-3">会社情報</h4>
+                            <div class="space-y-2 text-indigo-200">
+                                <p><strong class="text-white">株式会社エージェントベスト</strong></p>
+                                <p>設立：2020年4月1日</p>
+                                <p>所在地：東京都港区六本木四丁目8番地7号 六本木嶋田ビル5階</p>
+                                <p>URL：https://agent-best.net/</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 text-gray-900">
+                        <h3 class="text-2xl font-bold mb-6">お問い合わせフォーム</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">会社名 *</label>
+                                <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2">お名前 *</label>
+                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2">部署・役職</label>
+                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">メールアドレス *</label>
+                                <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">電話番号</label>
+                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">ご希望のプラン</label>
+                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                    <option value="">選択してください</option>
+                                    <option value="free">フリープラン</option>
+                                    <option value="standard">スタンダードプラン</option>
+                                    <option value="commit">コミットプラン</option>
+                                    <option value="consultation">まずは相談したい</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">お問い合わせ内容</label>
+                                <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="採用に関するお悩みや、ご質問をお聞かせください"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                送信する
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <div class="text-2xl font-bold text-indigo-400 mb-2">
+                        <i class="fas fa-users-cog mr-2"></i>
+                        エージェントベスト
+                    </div>
+                    <p class="text-gray-400">デジタルディバイドを解消し、フラットな経済活動に貢献する</p>
+                </div>
+                
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-3">サービス</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-white transition duration-300">スカウト代行サービス</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition duration-300">料金プラン</a></li>
+                        <li><a href="#results" class="hover:text-white transition duration-300">導入実績</a></li>
+                    </ul>
+                </div>
+                
+                <div class="w-full md:w-1/3">
+                    <h4 class="text-lg font-semibold mb-3">お問い合わせ</h4>
+                    <div class="text-gray-400 space-y-1">
+                        <p>株式会社エージェントベスト</p>
+                        <p>東京都港区六本木四丁目8番地7号</p>
+                        <p>六本木嶋田ビル5階</p>
+                        <p class="mt-2">有料職業紹介許可番号：13-ユ-316964</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 株式会社エージェントベスト. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます。担当者より24時間以内にご連絡いたします。');
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"96f15e7f7d1881bf","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDm8N%2FCJkgnUKqi4hklYPM5SvbYZQfOQo7Qp7VcUpbsvjzIAgt%2BmGKKaiQJKfnY2M1RYBI1qyJC4vHyacsBNRoxrGFuFXvR8f1asqQW5QGvrhytIfXxF3gWCP93MPSM4uW9teuB%2F%2Fjfb4Kbx%2Bf%2BntZ6%2BvV11%2FlZ%2BJkYw9dUMjIw43ZJA1KOyn32IXryNpPvPcPliI5I9X2Ig1DzjMseGbQyExejct%2F128%2B%2FsRq5iEjsVhNEvU9UN%2B0ynkREuKOOW6M4D0gRHEDjoqDL3wW0uTTgMeNMyXsPm3oe%2BeFUV0gwTZskaPYji0MbzTW2PeQOT6hqJxb5cx2No%2Fh1WkxNwjrfe%2BcDv6LerO4kyDoKKxGrksNC30uzU1jr4nvgCaxOHov9%2BJfZ88t7Gpvu3nMZW%2Fff%2B2Q9B2nXlC1zqR0RFsz50B1cadAG8rBPGE2JF35%2FsjgH%2FyqTm%2Byz7pGQhLQ85%2BOrHTc4RkahBq%2FqytfFXUuRe4rRbaLgM9bhgpZBtTm2HCJC3m5ZnCHxnEiff13xDaTJQ%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDm8N/CJkgnUKqi4hklYPM5SvbYZQfOQo7Qp7VcUpbsvjzIAgt+mGKKaiQJKfnY2M1RYBI1qyJC4vHyacsBNRoxrGFuFXvR8f1asqQW5QGvrhytIfXxF3gWCP93MPSM4uW9teuB//jfb4Kbx+f+ntZ6+vV11/lZ+JkYw9dUMjIw43ZJA1KOyn32IXryNpPvPcPliI5I9X2Ig1DzjMseGbQyExejct/128+/sRq5iEjsVhNEvU9UN+0ynkREuKOOW6M4D0gRHEDjoqDL3wW0uTTgMeNMyXsPm3oe+eFUV0gwTZskaPYji0MbzTW2PeQOT6hqJxb5cx2No/h1WkxNwjrfe+cDv6LerO4kyDoKKxGrksNC30uzU1jr4nvgCaxOHov9+JfZ88t7Gpvu3nMZW/ff+2Q9B2nXlC1zqR0RFsz50B1cadAG8rBPGE2JF35/sjgH/yqTm+yz7pGQhLQ85+OrHTc4RkahBq/qytfFXUuRe4rRbaLgM9bhgpZBtTm2HCJC3m5ZnCHxnEiff13xDaTJQ=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
