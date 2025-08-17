@@ -348,7 +348,7 @@
         <div class="bg-white rounded-lg p-6 card-shadow">
           <div class="mb-4">
             <h4 class="text-lg font-bold text-gray-900 mb-2">WEBマーケティング企業</h4>
-          <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
+            <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
           </div>
           <p class="text-gray-600 mb-4">OpenWork、Green、AMBIの運用により、セールス、インフラエンジニアの採用に成功。専門スキルを持つ即戦力人材を効率的に獲得。</p>
           <div class="flex items-center text-green-600"><i class="fas fa-users mr-2"></i><span class="font-semibold">即戦力採用成功</span></div>
@@ -445,44 +445,45 @@
     </div>
   </section>
 
-  <!-- Contact（Google フォーム埋め込み） -->
-  <section id="contact" class="py-16 bg-indigo-600 text-white">
-    <div class="container mx-auto px-6">
+  <!-- Contact（Google フォーム埋め込み・デザイン改良版） -->
+  <section id="contact" class="relative py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white">
+    <div class="absolute inset-0 opacity-10" style="background-image:url('https://www.transparenttextures.com/patterns/cubes.png');background-repeat:repeat;"></div>
+    <div class="relative container mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold mb-4">お問い合わせ</h2>
-        <p class="text-xl">以下の Google フォームから送信してください。</p>
+        <p class="text-lg text-indigo-100">ご相談・ご依頼は以下のフォームよりお気軽にどうぞ</p>
       </div>
 
       <div class="max-w-4xl mx-auto">
-        <div class="bg-white rounded-lg p-4 md:p-6 text-gray-900">
-          <h3 class="text-2xl font-bold mb-4">お問い合わせフォーム（Googleフォーム）</h3>
+        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 text-gray-900">
+          <h3 class="text-2xl font-bold mb-6 text-center text-indigo-700">お問い合わせフォーム</h3>
 
           <!-- フォームのレスポンシブ埋め込み -->
           <div class="w-full">
             <iframe
               id="gf"
               src="https://docs.google.com/forms/d/e/1FAIpQLSfpZmfg8l2ffBwInnKJ8y9Q_o-UOpb_cngH30nBmgph2y5DVw/viewform?embedded=true"
-              class="w-full rounded-lg"
+              class="w-full rounded-xl border border-gray-200 shadow-md"
               frameborder="0"
               marginheight="0"
               marginwidth="0"
               title="お問い合わせフォーム"
+              loading="lazy"
               style="height: 1000px; background: transparent;"
               allowfullscreen
             >読み込んでいます…</iframe>
           </div>
 
-          <!-- フォールバック（別タブ） -->
-          <div class="mt-4">
+          <!-- フォールバック（別タブリンク） -->
+          <div class="mt-6 text-center">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpZmfg8l2ffBwInnKJ8y9Q_o-UOpb_cngH30nBmgph2y5DVw/viewform"
                target="_blank" rel="noopener"
-               class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+               class="inline-flex items-center px-5 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
               別タブでフォームを開く <i class="fas fa-external-link-alt ml-2 text-sm"></i>
             </a>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
