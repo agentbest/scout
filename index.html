@@ -29,9 +29,6 @@
     .company-logo{filter:grayscale(100%);opacity:.7;transition:all .3s ease}
     .company-logo:hover{filter:grayscale(0%);opacity:1}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .form-loading{display:none}
-    .form-success{display:none;background-color:#d1fae5;border:1px solid #10b981;color:#047857}
-    .form-error{display:none;background-color:#fee2e2;border:1px solid #ef4444;color:#dc2626}
     /* 固定ヘッダー対策 */
     section{scroll-margin-top:96px}
   </style>
@@ -351,7 +348,7 @@
         <div class="bg-white rounded-lg p-6 card-shadow">
           <div class="mb-4">
             <h4 class="text-lg font-bold text-gray-900 mb-2">WEBマーケティング企業</h4>
-            <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
+          <div class="text-sm text-gray-500 mb-3">中途採用支援</div>
           </div>
           <p class="text-gray-600 mb-4">OpenWork、Green、AMBIの運用により、セールス、インフラエンジニアの採用に成功。専門スキルを持つ即戦力人材を効率的に獲得。</p>
           <div class="flex items-center text-green-600"><i class="fas fa-users mr-2"></i><span class="font-semibold">即戦力採用成功</span></div>
@@ -448,121 +445,44 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact（Google フォーム埋め込み） -->
   <section id="contact" class="py-16 bg-indigo-600 text-white">
     <div class="container mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold mb-4">お問い合わせ</h2>
-        <p class="text-xl">まずは無料相談から始めませんか？</p>
+        <p class="text-xl">以下の Google フォームから送信してください。</p>
       </div>
 
       <div class="max-w-4xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-2xl font-bold mb-6">お気軽にご相談ください</h3>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <i class="fas fa-phone text-yellow-400 mr-4 text-xl"></i>
-                <div>
-                  <p class="font-semibold">お電話でのお問い合わせ</p>
-                  <p class="text-indigo-200">平日 9:00-18:00</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <i class="fas fa-envelope text-yellow-400 mr-4 text-xl"></i>
-                <div>
-                  <p class="font-semibold">メールでのお問い合わせ</p>
-                  <p class="text-indigo-200">24時間受付</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <i class="fas fa-calendar-alt text-yellow-400 mr-4 text-xl"></i>
-                <div>
-                  <p class="font-semibold">オンライン商談</p>
-                  <p class="text-indigo-200">事前予約制</p>
-                </div>
-              </div>
-            </div>
+        <div class="bg-white rounded-lg p-4 md:p-6 text-gray-900">
+          <h3 class="text-2xl font-bold mb-4">お問い合わせフォーム（Googleフォーム）</h3>
 
-            <div class="mt-8 bg-indigo-700 rounded-lg p-6">
-              <h4 class="text-lg font-bold mb-3">会社情報</h4>
-              <div class="space-y-2 text-indigo-200">
-                <p><strong class="text-white">株式会社エージェントベスト</strong></p>
-                <p>設立：2020年4月1日</p>
-                <p>所在地：東京都港区六本木四丁目8番地7号 六本木嶋田ビル5階</p>
-                <p>URL：https://agent-best.net/</p>
-              </div>
-            </div>
+          <!-- フォームのレスポンシブ埋め込み -->
+          <div class="w-full">
+            <iframe
+              id="gf"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfpZmfg8l2ffBwInnKJ8y9Q_o-UOpb_cngH30nBmgph2y5DVw/viewform?embedded=true"
+              class="w-full rounded-lg"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="お問い合わせフォーム"
+              style="height: 1000px; background: transparent;"
+              allowfullscreen
+            >読み込んでいます…</iframe>
           </div>
 
-          <div class="bg-white rounded-lg p-6 text-gray-900">
-            <h3 class="text-2xl font-bold mb-6">お問い合わせフォーム</h3>
-
-            <!-- Status -->
-            <div id="form-success" class="form-success p-4 rounded-lg mb-4">
-              <i class="fas fa-check-circle mr-2"></i>お問い合わせありがとうございます。担当者より24時間以内にご連絡いたします。
-            </div>
-            <div id="form-error" class="form-error p-4 rounded-lg mb-4">
-              <i class="fas fa-exclamation-circle mr-2"></i>送信エラーが発生しました。しばらく時間をおいて再度お試しください。
-            </div>
-
-            <form id="contact-form" class="space-y-4" novalidate>
-              <div>
-                <label for="company" class="block text-sm font-semibold mb-2">会社名 *</label>
-                <input id="company" name="company" type="text" autocomplete="organization" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required />
-              </div>
-
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="block text-sm font-semibold mb-2">お名前 *</label>
-                  <input id="name" name="name" type="text" autocomplete="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required />
-                </div>
-                <div>
-                  <label for="position" class="block text-sm font-semibold mb-2">部署・役職</label>
-                  <input id="position" name="position" type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" />
-                </div>
-              </div>
-
-              <div>
-                <label for="email" class="block text-sm font-semibold mb-2">メールアドレス *</label>
-                <input id="email" name="email" type="email" autocomplete="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required />
-              </div>
-
-              <div>
-                <label for="phone" class="block text-sm font-semibold mb-2">電話番号</label>
-                <input id="phone" name="phone" type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" />
-              </div>
-
-              <div>
-                <label for="plan" class="block text-sm font-semibold mb-2">ご用件</label>
-                <select id="plan" name="plan" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                  <option value="">選択してください</option>
-                  <option value="consultation">まずは相談したい</option>
-                  <option value="seikyu">資料請求したい</option>
-                  <option value="sonohoka">その他</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="message" class="block text-sm font-semibold mb-2">お問い合わせ内容</label>
-                <textarea id="message" name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="採用に関するお悩みや、ご質問をお聞かせください"></textarea>
-              </div>
-
-              <!-- ハニーポット（bot対策） -->
-              <div style="position:absolute;left:-9999px" aria-hidden="true">
-                <label for="hp">Leave this field empty</label>
-                <input id="hp" name="hp" type="text" tabindex="-1" autocomplete="off" />
-              </div>
-
-              <button type="submit" id="submit-btn" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
-                <i class="fas fa-paper-plane mr-2"></i>
-                <span id="submit-text">送信する</span>
-                <i id="loading-spinner" class="fas fa-spinner fa-spin ml-2 form-loading"></i>
-              </button>
-            </form>
+          <!-- フォールバック（別タブ） -->
+          <div class="mt-4">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpZmfg8l2ffBwInnKJ8y9Q_o-UOpb_cngH30nBmgph2y5DVw/viewform"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+              別タブでフォームを開く <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -624,8 +544,9 @@
   }
   </script>
 
-  <!-- Smooth Scroll -->
+  <!-- Smooth Scroll & フォーム高さ調整 -->
   <script>
+    // スムーススクロール
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         e.preventDefault();
@@ -634,118 +555,18 @@
       })
     });
     function scrollToContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'})}
-  </script>
 
-  <!-- Form: mailto 送信（即時稼働版） / EmailJS 切替可 -->
-  <!-- ※EmailJS を使う場合は、下の mailto 部分をコメントアウトし、EmailJS 初期化＋sendを有効化してください。 -->
-  <script>
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const submitBtn=document.getElementById('submit-btn');
-      const submitText=document.getElementById('submit-text');
-      const loadingSpinner=document.getElementById('loading-spinner');
-      const successMsg=document.getElementById('form-success');
-      const errorMsg=document.getElementById('form-error');
-
-      // bot 判定（ハニーポット）
-      if(document.getElementById('hp').value){ return; }
-
-      // ローディング状態
-      submitBtn.disabled=true;
-      submitText.textContent='送信中...';
-      loadingSpinner.style.display='inline-block';
-      successMsg.style.display='none';
-      errorMsg.style.display='none';
-
-      const fd=new FormData(form);
-      const data={
-        company: fd.get('company')||'',
-        name: fd.get('name')||'',
-        position: fd.get('position')||'未入力',
-        email: fd.get('email')||'',
-        phone: fd.get('phone')||'未入力',
-        plan: fd.get('plan')||'未選択',
-        message: fd.get('message')||'未入力',
-        date: new Date().toLocaleDateString('ja-JP'),
-        time: new Date().toLocaleTimeString('ja-JP')
+    // 画面に応じて iframe の高さを調整（中身の高さは取得できないため目安）
+    (function(){
+      const frame = document.getElementById('gf');
+      const adjust = () => {
+        // 最低 1000px、ビューポートの 90% 以上
+        const h = Math.max(1000, Math.floor(window.innerHeight * 0.9));
+        frame.style.height = h + 'px';
       };
-
-      // mailto（改善版）
-      try{
-        const subject = `【スカウト代行サービス】お問い合わせ - ${data.company}`;
-        const body =
-`会社名: ${data.company}
-お名前: ${data.name}
-部署・役職: ${data.position}
-メールアドレス: ${data.email}
-電話番号: ${data.phone}
-ご用件: ${data.plan}
-お問い合わせ内容:
-${data.message}
-
-送信日時: ${data.date} ${data.time}`;
-        const link = `mailto:r_matsuoka@agent-best.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.open(link, '_blank'); // 新規タブで開くことで失敗時もフォーム状態保持
-        showSuccess();
-      }catch(err){
-        showError();
-      }
-
-      function showSuccess(){
-        submitBtn.disabled=false;
-        submitText.textContent='送信する';
-        loadingSpinner.style.display='none';
-        successMsg.style.display='block';
-        form.reset();
-        setTimeout(()=>{successMsg.style.display='none'},5000);
-      }
-      function showError(){
-        submitBtn.disabled=false;
-        submitText.textContent='送信する';
-        loadingSpinner.style.display='none';
-        errorMsg.style.display='block';
-        setTimeout(()=>{errorMsg.style.display='none'},5000);
-      }
-    });
+      window.addEventListener('load', adjust);
+      window.addEventListener('resize', adjust);
+    })();
   </script>
-
-  <!-- ▼ EmailJS を使う場合は下記を有効化（上の mailto ブロックはコメントアウト） ▼
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    emailjs.init("YOUR_PUBLIC_KEY"); // 置換
-    document.getElementById('contact-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      if(document.getElementById('hp').value){ return; }
-      const submitBtn=document.getElementById('submit-btn');
-      const submitText=document.getElementById('submit-text');
-      const loadingSpinner=document.getElementById('loading-spinner');
-      const successMsg=document.getElementById('form-success');
-      const errorMsg=document.getElementById('form-error');
-
-      submitBtn.disabled=true; submitText.textContent='送信中...';
-      loadingSpinner.style.display='inline-block'; successMsg.style.display='none'; errorMsg.style.display='none';
-
-      const f=this;
-      const data={
-        company:f.company.value,name:f.name.value,position:f.position.value||'未入力',
-        email:f.email.value,phone:f.phone.value||'未入力',
-        plan:f.plan.value||'未選択',message:f.message.value||'未入力',
-        date:new Date().toLocaleDateString('ja-JP'),time:new Date().toLocaleTimeString('ja-JP')
-      };
-
-      emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',data)
-        .then(()=>{ showSuccess(); })
-        .catch(()=>{ showError(); });
-
-      function showSuccess(){ submitBtn.disabled=false; submitText.textContent='送信する'; loadingSpinner.style.display='none'; successMsg.style.display='block'; f.reset(); setTimeout(()=>{successMsg.style.display='none'},5000); }
-      function showError(){ submitBtn.disabled=false; submitText.textContent='送信する'; loadingSpinner.style.display='none'; errorMsg.style.display='block'; setTimeout(()=>{errorMsg.style.display='none'},5000); }
-    });
-  </script>
-  ▲ EmailJSここまで ▲ -->
-
-  <!-- （任意）Cloudflare Insights を使う場合はプライバシーポリシー整備のうえ有効化
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"YOUR_TOKEN"}'></script>
-  -->
 </body>
 </html>
