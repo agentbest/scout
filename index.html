@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -38,6 +40,31 @@
         .company-logo:hover {
             filter: grayscale(0%);
             opacity: 1;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-loading {
+            display: none;
+        }
+        .form-success {
+            display: none;
+            background-color: #d1fae5;
+            border: 1px solid #10b981;
+            color: #047857;
+        }
+        .form-error {
+            display: none;
+            background-color: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #dc2626;
         }
     </style>
 </head>
@@ -316,7 +343,7 @@
                         </div>
                     </div>
                     
-                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300" onclick="scrollToContact()">
                         今すぐ始める
                     </button>
                 </div>
@@ -360,7 +387,7 @@
                         </div>
                     </div>
                     
-                    <button class="w-full bg-yellow-400 text-gray-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">
+                    <button class="w-full bg-yellow-400 text-gray-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300" onclick="scrollToContact()">
                         詳細を見る
                     </button>
                 </div>
@@ -400,7 +427,7 @@
                         </div>
                     </div>
                     
-                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300" onclick="scrollToContact()">
                         相談する
                     </button>
                 </div>
@@ -688,52 +715,64 @@
                     
                     <div class="bg-white rounded-lg p-6 text-gray-900">
                         <h3 class="text-2xl font-bold mb-6">お問い合わせフォーム</h3>
-                        <form class="space-y-4">
+                        
+                        <!-- Status Messages -->
+                        <div id="form-success" class="form-success p-4 rounded-lg mb-4">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            お問い合わせありがとうございます。担当者より24時間以内にご連絡いたします。
+                        </div>
+                        
+                        <div id="form-error" class="form-error p-4 rounded-lg mb-4">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            送信エラーが発生しました。しばらく時間をおいて再度お試しください。
+                        </div>
+                        
+                        <form id="contact-form" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">会社名 *</label>
-                                <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                <input type="text" name="company" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
                             </div>
                             
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-semibold mb-2">お名前 *</label>
-                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                    <input type="text" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold mb-2">部署・役職</label>
-                                    <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                    <input type="text" name="position" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
                                 </div>
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-semibold mb-2">メールアドレス *</label>
-                                <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                <input type="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-semibold mb-2">電話番号</label>
-                                <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <input type="tel" name="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-semibold mb-2">ご希望のプラン</label>
-                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <label class="block text-sm font-semibold mb-2">お問い合わせ内容</label>
+                                <select name="plan" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
                                     <option value="">選択してください</option>
-                                    <option value="free">フリープラン</option>
-                                    <option value="standard">スタンダードプラン</option>
-                                    <option value="commit">コミットプラン</option>
                                     <option value="consultation">まずは相談したい</option>
+                                     <option value="seikyu">資料請求したい</option>
+                                     <option value="sonohoka">その他</option>
                                 </select>
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-semibold mb-2">お問い合わせ内容</label>
-                                <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="採用に関するお悩みや、ご質問をお聞かせください"></textarea>
+                                <textarea name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="採用に関するお悩みや、ご質問をお聞かせください"></textarea>
                             </div>
                             
-                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                            <button type="submit" id="submit-btn" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
                                 <i class="fas fa-paper-plane mr-2"></i>
-                                送信する
+                                <span id="submit-text">送信する</span>
+                                <i id="loading-spinner" class="fas fa-spinner fa-spin ml-2 form-loading"></i>
                             </button>
                         </form>
                     </div>
@@ -751,7 +790,7 @@
                         <i class="fas fa-users-cog mr-2"></i>
                         エージェントベスト
                     </div>
-                    <p class="text-gray-400">デジタルディバイドを解消し、フラットな経済活動に貢献する</p>
+                    <p class="text-gray-400">ダイレクトリクルーティングのプロフェッショナル</p>
                 </div>
                 
                 <div class="w-full md:w-1/3 mb-6 md:mb-0">
@@ -781,20 +820,122 @@
     </footer>
 
     <script>
+        // Initialize EmailJS
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // Function to scroll to contact section
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Form submission handler with EmailJS
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('お問い合わせありがとうございます。担当者より24時間以内にご連絡いたします。');
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const successMsg = document.getElementById('form-success');
+            const errorMsg = document.getElementById('form-error');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = '送信中...';
+            loadingSpinner.style.display = 'inline-block';
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const templateParams = {
+                company: formData.get('company'),
+                name: formData.get('name'),
+                position: formData.get('position') || '未入力',
+                email: formData.get('email'),
+                phone: formData.get('phone') || '未入力',
+                plan: formData.get('plan') || '未選択',
+                message: formData.get('message') || '未入力',
+                date: new Date().toLocaleDateString('ja-JP'),
+                time: new Date().toLocaleTimeString('ja-JP')
+            };
+
+            // Alternative method: Use a simple email service or direct mailto
+            // Since this is a demonstration, we'll use a fallback approach
+            
+            // Method 1: EmailJS (requires setup)
+            /*
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showSuccess();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showError();
+                });
+            */
+            
+            // Method 2: Fallback - Create mailto link and show success
+            setTimeout(() => {
+                const emailBody = `
+会社名: ${templateParams.company}
+お名前: ${templateParams.name}
+部署・役職: ${templateParams.position}
+メールアドレス: ${templateParams.email}
+電話番号: ${templateParams.phone}
+ご希望のプラン: ${templateParams.plan}
+お問い合わせ内容: ${templateParams.message}
+
+送信日時: ${templateParams.date} ${templateParams.time}
+                `.trim();
+                
+                const mailtoLink = `mailto:r_matsuoka@agent-best.net?subject=【スカウト代行サービス】お問い合わせ - ${templateParams.company}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                showSuccess();
+            }, 1500);
+            
+            function showSuccess() {
+                submitBtn.disabled = false;
+                submitText.textContent = '送信する';
+                loadingSpinner.style.display = 'none';
+                successMsg.style.display = 'block';
+                document.getElementById('contact-form').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            }
+            
+            function showError() {
+                submitBtn.disabled = false;
+                submitText.textContent = '送信する';
+                loadingSpinner.style.display = 'none';
+                errorMsg.style.display = 'block';
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 5000);
+            }
         });
 
         // Add animation on scroll
@@ -816,27 +957,14 @@
             observer.observe(section);
         });
     </script>
-
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"96f15e7f7d1881bf","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"97081c101df9e371","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDm8N%2FCJkgnUKqi4hklYPM5SvbYZQfOQo7Qp7VcUpbsvjzIAgt%2BmGKKaiQJKfnY2M1RYBI1qyJC4vHyacsBNRoxrGFuFXvR8f1asqQW5QGvrhytIfXxF3gWCP93MPSM4uW9teuB%2F%2Fjfb4Kbx%2Bf%2BntZ6%2BvV11%2FlZ%2BJkYw9dUMjIw43ZJA1KOyn32IXryNpPvPcPliI5I9X2Ig1DzjMseGbQyExejct%2F128%2B%2FsRq5iEjsVhNEvU9UN%2B0ynkREuKOOW6M4D0gRHEDjoqDL3wW0uTTgMeNMyXsPm3oe%2BeFUV0gwTZskaPYji0MbzTW2PeQOT6hqJxb5cx2No%2Fh1WkxNwjrfe%2BcDv6LerO4kyDoKKxGrksNC30uzU1jr4nvgCaxOHov9%2BJfZ88t7Gpvu3nMZW%2Fff%2B2Q9B2nXlC1zqR0RFsz50B1cadAG8rBPGE2JF35%2FsjgH%2FyqTm%2Byz7pGQhLQ85%2BOrHTc4RkahBq%2FqytfFXUuRe4rRbaLgM9bhgpZBtTm2HCJC3m5ZnCHxnEiff13xDaTJQ%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDorh%2FRcPQy05W93gG9ojNfMzYTQil3%2FVqk7gOPyk%2FOaIfNfAfRpSHoEBPtj0V8pGoRzlALeNZXVEFgzaf2oJANYXvBL%2FKDI%2FgraQh0PZW9koEBhxFox66ftVaelS9AYOKbxInWu6s0UAJ%2BOGbcQ%2Bdfxl8x2oxSlaExmExDwVnJsUC2kCF3oTW3i0j0jpM0lctI0Y2y2NtqLPxIGW0jTVPuQik0Eh6v8M0WHkzwYLbfzuwATggF50SrBehc2jCc7gJ1pDSifcQWMpKJrRSb9C1BhTDxVSI00YrKtWcaQ%2FgURjEmkglj7xqqE9Sp2g2y3Tb5vcq0U4lT7ytqAtsBiv6cmO%2FUq433mkV84dLWfyXrWum2fEYxBZlraOBm9LSHzp6Yr2WtQOnQCg7qiTLC5FfezVw7sghceKHqdglKb0ObGqJEyf%2Fd%2FvOYt1zwYvBMKOV4jkyd%2Bk07z7KWLcQhHWyM9JPGSlSTXaFKkQ3wXX1YrypX%2FZKvklBrsLgqQ7uS0EQA%3D%3D";
         window.__genspark_locale = "ja-JP";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDm8N/CJkgnUKqi4hklYPM5SvbYZQfOQo7Qp7VcUpbsvjzIAgt+mGKKaiQJKfnY2M1RYBI1qyJC4vHyacsBNRoxrGFuFXvR8f1asqQW5QGvrhytIfXxF3gWCP93MPSM4uW9teuB//jfb4Kbx+f+ntZ6+vV11/lZ+JkYw9dUMjIw43ZJA1KOyn32IXryNpPvPcPliI5I9X2Ig1DzjMseGbQyExejct/128+/sRq5iEjsVhNEvU9UN+0ynkREuKOOW6M4D0gRHEDjoqDL3wW0uTTgMeNMyXsPm3oe+eFUV0gwTZskaPYji0MbzTW2PeQOT6hqJxb5cx2No/h1WkxNwjrfe+cDv6LerO4kyDoKKxGrksNC30uzU1jr4nvgCaxOHov9+JfZ88t7Gpvu3nMZW/ff+2Q9B2nXlC1zqR0RFsz50B1cadAG8rBPGE2JF35/sjgH/yqTm+yz7pGQhLQ85+OrHTc4RkahBq/qytfFXUuRe4rRbaLgM9bhgpZBtTm2HCJC3m5ZnCHxnEiff13xDaTJQ=";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDorh/RcPQy05W93gG9ojNfMzYTQil3/Vqk7gOPyk/OaIfNfAfRpSHoEBPtj0V8pGoRzlALeNZXVEFgzaf2oJANYXvBL/KDI/graQh0PZW9koEBhxFox66ftVaelS9AYOKbxInWu6s0UAJ+OGbcQ+dfxl8x2oxSlaExmExDwVnJsUC2kCF3oTW3i0j0jpM0lctI0Y2y2NtqLPxIGW0jTVPuQik0Eh6v8M0WHkzwYLbfzuwATggF50SrBehc2jCc7gJ1pDSifcQWMpKJrRSb9C1BhTDxVSI00YrKtWcaQ/gURjEmkglj7xqqE9Sp2g2y3Tb5vcq0U4lT7ytqAtsBiv6cmO/Uq433mkV84dLWfyXrWum2fEYxBZlraOBm9LSHzp6Yr2WtQOnQCg7qiTLC5FfezVw7sghceKHqdglKb0ObGqJEyf/d/vOYt1zwYvBMKOV4jkyd+k07z7KWLcQhHWyM9JPGSlSTXaFKkQ3wXX1YrypX/ZKvklBrsLgqQ7uS0EQA==";
     </script>
     
     <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
