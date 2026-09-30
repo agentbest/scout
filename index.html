@@ -158,8 +158,7 @@
   .profile{display:grid;grid-template-columns:.8fr 1.2fr;gap:0;background:var(--surface);border:1px solid var(--line);
     border-radius:20px;overflow:hidden;box-shadow:var(--shadow);max-width:920px;margin:0 auto}
   .profile .left{background:var(--navy);color:var(--on-navy);padding:38px 30px;text-align:center}
-  .profile .left .av{width:74px;height:74px;border-radius:20px;margin:0 auto 16px;
-    background:linear-gradient(145deg,var(--accent),#8E90F5);display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.3rem}
+  .profile .left .av{width:74px;height:74px;border-radius:20px;margin:0 auto 16px;background:#fff;border:1px solid var(--line);padding:10px;box-sizing:border-box}
   .profile .left b{font-size:1.3rem;font-weight:900;display:block}
   .profile .left span{font-size:.84rem;color:var(--on-navy-soft)}
   .profile .right{padding:34px 32px}
@@ -212,6 +211,7 @@
   .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
   .rv.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+  .av img{width:100%;height:100%;object-fit:contain;display:block}
 </style>
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 
@@ -509,7 +509,7 @@
       </div>
       <div class="profile rv">
         <div class="left">
-          <div class="av" aria-hidden="true">AB</div>
+          <div class="av"><img src="icon-192.png" alt="株式会社エージェントベストのロゴ" width="192" height="192"></div>
           <b>松岡 良次</b>
           <span>代表取締役</span>
         </div>
